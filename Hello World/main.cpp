@@ -6,8 +6,12 @@
 //
 
 #include <stdio.h>
-int main()
+void function()
 {
     printf("Hello, World!\n");
+}
+int main()
+{
+    function();
     return 0;
 }
