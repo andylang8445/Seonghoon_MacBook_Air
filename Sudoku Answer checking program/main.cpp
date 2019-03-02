@@ -12,12 +12,14 @@
 int cpy[N];
 int map[N][N];
 int line_test();
-int box_test();
 
 int main()
 {
     int vertical_error=0;
     int horizontal_error=0;
+    int box_error=0;
+    int cpy_cnt=0;
+    printf("Test\n");
     for(int i=0;i<N;i++)
     {
         for(int j=0;j<N;j++)
@@ -35,8 +37,20 @@ int main()
         }
         horizontal_error+=line_test();
     }
+    for(int i=0;i<=6;i+=3)
+    {
+        for(int j=0;j<=6;j+=3)
+        {
+            for(int x=i;x<i+3;x++)
+                for(int y=j;y<j+3;y++)
+                    cpy[cpy_cnt++]=map[x][y];
+            cpy_cnt=0;
+            box_error+=line_test();
+        }
+    }
+    
+    printf("Vertical error: %d\nHorizontal error: %d\nBox error: %d\n----------------\nTotal error count: %d\n",vertical_error,horizontal_error,box_error,(vertical_error+horizontal_error+box_error));
 }
-
 int line_test()
 {
     for(int i=0;i<N-1;i++)
